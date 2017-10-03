@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.coikontroly</groupId>
-	<artifactId>coi_web</artifactId>
+	<artifactId>coi-rest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>coi</name>
+	<name>coi-rest</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -14,7 +14,7 @@
 	</properties>
 
 	<build>
-		<finalName>coi-web</finalName>
+		<finalName>coi-rest</finalName>
 
 		<plugins>
 			<plugin>

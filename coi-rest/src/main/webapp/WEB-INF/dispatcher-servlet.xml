@@ -12,7 +12,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
         
 	<mvc:annotation-driven />
-	<context:component-scan base-package="com.coikontroly.web.controllers" />
+	<context:component-scan base-package="com.coikontroly.rest.controllers" />
 
 	<!-- Spring's message source -->
 	<!-- Folder src/main/resources has to be added to project classpath -->

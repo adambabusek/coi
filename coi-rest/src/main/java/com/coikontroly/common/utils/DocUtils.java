@@ -27,4 +27,16 @@ public class DocUtils {
 	public static String toJson(String key, FindIterable<Document> findIterable) {
 		return toDocument(key, findIterable).toJson();
 	}
+
+	public static <T> Document getSuccessResult(String key, T value) {
+		Document ret = new Document(Constants.KEY_RESULT_TYPE, ResultType.SUCCESS.name());
+		ret.put(key, value);
+		return ret;
+	}
+
+	public static <T> Document getErrorResult(String key, T value) {
+		Document ret = new Document(Constants.KEY_RESULT_TYPE, ResultType.ERROR.name());
+		ret.put(key, value);
+		return ret;
+	}
 }
