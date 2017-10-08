@@ -10,19 +10,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.coikontroly.common.utils.Constants;
-import com.coikontroly.common.utils.DocUtils;
-import com.coikontroly.dao.InspectionDao;
+import com.coikontroly.service.InspectionService;
 
 @RestController
 @RequestMapping("/inspection")
 public class InspectionController {
 
 	@Autowired
-	private InspectionDao inspectionDao;
+	private InspectionService inspectionSvc;
 
 	@RequestMapping(value="/{ico}", method=RequestMethod.GET, produces="application/json")
-	public String findInspections(@PathVariable(value="ico") Long ico) {
-		Collection<Document> result = inspectionDao.findInspectionByICO(ico);
-		return DocUtils.getSuccessResult(Constants.KEY_INSPECTIONS, result).toJson();
+	public String findInspections(@PathVariable(value="ico") String ico) {
+		Collection<Document> result = inspectionSvc.findInspections(ico);
+		return new Document(Constants.KEY_INSPECTIONS, result).toJson();
 	}
 }

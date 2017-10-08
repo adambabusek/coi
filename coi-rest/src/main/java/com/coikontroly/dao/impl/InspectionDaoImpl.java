@@ -19,7 +19,7 @@ public class InspectionDaoImpl implements InspectionDao {
 	private MongoDatabase mongoDb;
 
 	@Override
-	public Collection<Document> findInspectionByICO(Long ico) {
+	public Collection<Document> findInspections(Long ico) {
 		FindIterable<Document> search = mongoDb.getCollection(Constants.COLL_KONTROLY)
 												.find(new Document(Constants.KEY_ICO, ico));
 		Collection<Document> ret = new ArrayList<>();

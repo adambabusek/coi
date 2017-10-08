@@ -11,6 +11,7 @@
         http://www.springframework.org/schema/cache/spring-cache.xsd">
         
 	<context:component-scan base-package="com.coikontroly.dao.impl" />
+	<context:component-scan base-package="com.coikontroly.service.impl" />
 
 	<bean id="mongoClient" class="com.mongodb.MongoClient">
 		<constructor-arg name="host" type="java.lang.String"
