@@ -10,6 +10,7 @@ public class Constants {
 	public static final String KEY_RESULT_TYPE = "resultType";
 	public static final String KEY_INSPECTIONS = "inspections";
 	public static final String KEY_MESSAGE = "message";
+	public static final String KEY_ORGANIZATION = "organization";
 
 	private Constants() { }
 
