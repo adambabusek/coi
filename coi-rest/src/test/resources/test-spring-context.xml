@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/cache
+        http://www.springframework.org/schema/cache/spring-cache.xsd">
+        
+	<context:component-scan base-package="com.coikontroly.dao.impl" />
+	<context:component-scan base-package="com.coikontroly.service.impl" />
+
+	<bean id="mongoClient" class="com.mongodb.MongoClient">
+		<constructor-arg name="host" type="java.lang.String"
+			value="localhost" />
+		<constructor-arg name="port" type="int" value="27017" />
+	</bean>
+
+	<bean id="databaseName" class="java.lang.String">
+		<constructor-arg value="coi" />
+	</bean>
+
+	<bean id="cacheManager" class="org.springframework.cache.concurrent.ConcurrentMapCacheManager" />	
+	
+	<!-- Spring's message source for settingSource -->
+	<!-- Folder src/main/resources has to be added to project classpath -->
+	<bean id="settingSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:settings" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+
+</beans>
