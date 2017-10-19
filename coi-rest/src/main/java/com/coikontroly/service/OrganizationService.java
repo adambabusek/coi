@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.bson.Document;
 import org.springframework.context.NoSuchMessageException;
+import org.xml.sax.SAXException;
 
 public interface OrganizationService {
 
@@ -12,5 +13,5 @@ public interface OrganizationService {
 	 * @param ico Identification of organization
 	 * @return org.bson.Document object with organization values'ico', 'name' and 'place'
 	 */
-	Document findOrganization(String ico) throws NoSuchMessageException, IOException;
+	Document findOrganization(String ico) throws NoSuchMessageException, IOException, SAXException;
 }

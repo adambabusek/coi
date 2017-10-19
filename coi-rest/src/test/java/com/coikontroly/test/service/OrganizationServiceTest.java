@@ -2,8 +2,12 @@ package com.coikontroly.test.service;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.io.IOException;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.NoSuchMessageException;
+import org.xml.sax.SAXException;
 
 import com.coikontroly.service.OrganizationService;
 import com.coikontroly.test.common.BaseTest;
@@ -14,7 +18,8 @@ public class OrganizationServiceTest extends BaseTest {
 	private OrganizationService orgSvc;
 
 	@Test
-	public void firstTest() {
+	public void firstTest() throws NoSuchMessageException, IOException, SAXException {
+		orgSvc.findOrganization("28528492");
 		assertNotNull(orgSvc);
 	}
 }

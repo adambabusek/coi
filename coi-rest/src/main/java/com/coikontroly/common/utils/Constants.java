@@ -11,6 +11,8 @@ public class Constants {
 	public static final String KEY_INSPECTIONS = "inspections";
 	public static final String KEY_MESSAGE = "message";
 	public static final String KEY_ORGANIZATION = "organization";
+	public static final String KEY_NAME = "name";
+	public static final String KEY_PLACE = "place";
 
 	private Constants() { }
 
