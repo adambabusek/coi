@@ -16,7 +16,7 @@ import com.coikontroly.common.utils.Constants;
 import com.coikontroly.service.OrganizationService;
 
 @Component
-public class OrganizationServiceJusticeImpl implements OrganizationService {
+public class OrganizationServiceJusticeCZImpl implements OrganizationService {
 
 	private static final String CSS_QUERY_TABLE = "table.result-details";
 

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
 
+import org.bson.Document;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.NoSuchMessageException;
@@ -19,7 +20,7 @@ public class OrganizationServiceTest extends BaseTest {
 
 	@Test
 	public void firstTest() throws NoSuchMessageException, IOException, SAXException {
-		orgSvc.findOrganization("28528492");
-		assertNotNull(orgSvc);
+		Document doc = orgSvc.findOrganization("28528492");
+		assertNotNull(doc);
 	}
 }
