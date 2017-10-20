@@ -37,11 +37,16 @@ public class OrganizationServiceJusticeCZImpl implements OrganizationService {
 	}
 
 	private String findPlaceValue(Elements cells) {
-		return cells.get(cells.size() - 1).select("span").get(1).html();
+		return cells.get(cells.size() - 1)
+					.select("span")
+					.get(1)
+					.html().trim();
 	}
 
 	private String findNameValue(Elements cells) {
-		return cells.get(0).select("strong").html();
+		return cells.get(0)
+					.select("strong")
+					.html();
 	}
 
 }
