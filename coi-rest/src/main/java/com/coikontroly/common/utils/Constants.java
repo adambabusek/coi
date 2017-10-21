@@ -13,6 +13,10 @@ public class Constants {
 	public static final String KEY_ORGANIZATION = "organization";
 	public static final String KEY_NAME = "name";
 	public static final String KEY_PLACE = "place";
+	public static final String KEY_SUCCESS = "success";
+	public static final String KEY_ERROR = "error";
+	public static final String KEY_ERROR_TYPE = "errorType";
+	public static final String KEY_USER_MESSAGE = "userMsg";
 
 	private Constants() { }
 

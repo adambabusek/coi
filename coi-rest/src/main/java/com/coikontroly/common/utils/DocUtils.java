@@ -6,6 +6,8 @@ import java.util.function.Consumer;
 
 import org.bson.Document;
 
+import com.coikontroly.common.components.MessageResolver;
+import com.coikontroly.common.domain.ErrorType;
 import com.mongodb.client.FindIterable;
 
 public class DocUtils {
@@ -28,15 +30,32 @@ public class DocUtils {
 		return toDocument(key, findIterable).toJson();
 	}
 
-	public static <T> Document getSuccessResult(String key, T value) {
-		Document ret = new Document(Constants.KEY_RESULT_TYPE, ResultType.SUCCESS.name());
-		ret.put(key, value);
+	/**
+	 * Creates org.bson.Document object with value success=true
+	 * @return
+	 */
+	public static Document getSuccessDoc() {
+		Document ret = new Document(Constants.KEY_SUCCESS, true);
 		return ret;
 	}
 
-	public static <T> Document getErrorResult(String key, T value) {
-		Document ret = new Document(Constants.KEY_RESULT_TYPE, ResultType.ERROR.name());
-		ret.put(key, value);
+	/**
+	 * Creates org.bson.Document object with values success=false and error object.
+	 * @param errorType
+	 * @param userMessage
+	 * @return
+	 */
+	public static Document getErrorDoc(ErrorType errorType, String userMessage) {
+		Document ret = new Document(Constants.KEY_SUCCESS, false);
+		Document error = new Document(Constants.KEY_ERROR_TYPE, ErrorType.ORGANIZATION_NOT_FOUND.name());
+		error.append(Constants.KEY_USER_MESSAGE, userMessage);
+		ret.append(Constants.KEY_ERROR, error);
 		return ret;
+	}
+
+	public static Document getUnknownErrorDoc(MessageResolver msgRes) {
+		return getErrorDoc(ErrorType.UNKNOWN_ERROR, msgRes != null
+													? msgRes.getMessage("error.unknown")
+													: "");
 	}
 }

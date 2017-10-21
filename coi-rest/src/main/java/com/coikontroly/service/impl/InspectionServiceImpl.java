@@ -1,31 +1,38 @@
 package com.coikontroly.service.impl;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.regex.Pattern;
+import java.io.IOException;
 
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
+import com.coikontroly.common.components.MessageResolver;
+import com.coikontroly.common.utils.CheckUtils;
+import com.coikontroly.common.utils.Constants;
+import com.coikontroly.common.utils.DocUtils;
 import com.coikontroly.dao.InspectionDao;
 import com.coikontroly.service.InspectionService;
+import com.coikontroly.service.OrganizationService;
 
 @Component
-public class InspectionServiceImpl implements InspectionService{
+public class InspectionServiceImpl implements InspectionService {
 
-	public static final String REGEXP_ICO = "\\d+";
+	@Autowired
+	private MessageResolver msgRes;
 
 	@Autowired
 	private InspectionDao inspectionDao;
 
+	@Autowired
+	private OrganizationService organizationSvc;
+
 	@Override
-	public Collection<Document> findInspections(String ico) {
-		if (!StringUtils.hasText(ico) || !Pattern.matches(REGEXP_ICO, ico)) {
-			return Collections.emptyList();
-		}
-		return inspectionDao.findInspections(Long.valueOf(ico));
+	public Document findInspections(String ico) throws IOException {
+		CheckUtils.checkIco(ico, msgRes);
+		Document ret = DocUtils.getSuccessDoc();
+		ret.append(Constants.KEY_ORGANIZATION, organizationSvc.findOrganization(ico));
+		ret.append(Constants.KEY_INSPECTIONS, inspectionDao.findInspections(Long.valueOf(ico)));
+		return ret;
 	}
 
 
