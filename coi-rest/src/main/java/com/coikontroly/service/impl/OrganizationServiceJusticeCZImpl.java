@@ -13,7 +13,7 @@ import com.coikontroly.common.utils.CheckUtils;
 import com.coikontroly.common.utils.Constants;
 import com.coikontroly.service.OrganizationService;
 
-@Component
+@Component("justiceSvc")
 public class OrganizationServiceJusticeCZImpl implements OrganizationService {
 
 	private static final String CSS_QUERY_TABLE = "table.result-details";

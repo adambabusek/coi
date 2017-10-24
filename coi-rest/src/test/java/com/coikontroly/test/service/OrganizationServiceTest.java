@@ -20,6 +20,7 @@ public class OrganizationServiceTest extends BaseTest {
 
 	private static final String ICO_1 = "27082440";
 	private static final String ICO_EMPTY = "";
+	private static final String ICO_INVALID = "9x9x9x9x";
 
 	@Autowired
 	private OrganizationService orgSvc;
@@ -39,6 +40,12 @@ public class OrganizationServiceTest extends BaseTest {
 			orgSvc.findOrganization(ICO_EMPTY);
 		} catch (UserException ex) {
 			assertEquals(ex.getType(), ErrorType.EMPTY_ICO);
+		}
+
+		try {
+			orgSvc.findOrganization(ICO_INVALID);
+		} catch (UserException ex) {
+			assertEquals(ex.getType(), ErrorType.INVALID_ICO);
 		}
 	}
 }

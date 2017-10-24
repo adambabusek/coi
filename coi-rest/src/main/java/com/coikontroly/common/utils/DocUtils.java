@@ -47,12 +47,18 @@ public class DocUtils {
 	 */
 	public static Document getErrorDoc(ErrorType errorType, String userMessage) {
 		Document ret = new Document(Constants.KEY_SUCCESS, false);
-		Document error = new Document(Constants.KEY_ERROR_TYPE, ErrorType.ORGANIZATION_NOT_FOUND.name());
+		Document error = new Document(Constants.KEY_ERROR_TYPE, errorType.name());
 		error.append(Constants.KEY_USER_MESSAGE, userMessage);
 		ret.append(Constants.KEY_ERROR, error);
 		return ret;
 	}
 
+	/**
+	 * Creates org.bson.Document object with values success=false and error object with type UNKNOWN_ERROR.
+	 * If MessageResolver is null then userMessage of error is empty.
+	 * @param msgRes
+	 * @return
+	 */
 	public static Document getUnknownErrorDoc(MessageResolver msgRes) {
 		return getErrorDoc(ErrorType.UNKNOWN_ERROR, msgRes != null
 													? msgRes.getMessage("error.unknown")

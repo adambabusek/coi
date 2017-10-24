@@ -24,13 +24,13 @@ public class InspectionServiceImpl implements InspectionService {
 	private InspectionDao inspectionDao;
 
 	@Autowired
-	private OrganizationService organizationSvc;
+	private OrganizationService justiceSvc;
 
 	@Override
 	public Document findInspections(String ico) throws IOException {
 		CheckUtils.checkIco(ico, msgRes);
 		Document ret = DocUtils.getSuccessDoc();
-		ret.append(Constants.KEY_ORGANIZATION, organizationSvc.findOrganization(ico));
+		ret.append(Constants.KEY_ORGANIZATION, justiceSvc.findOrganization(ico));
 		ret.append(Constants.KEY_INSPECTIONS, inspectionDao.findInspections(Long.valueOf(ico)));
 		return ret;
 	}

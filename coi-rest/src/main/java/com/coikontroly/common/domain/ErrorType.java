@@ -6,7 +6,7 @@ public enum ErrorType {
 	/** organization was not found by ico */
 	ORGANIZATION_NOT_FOUND(1),
 	/** ico is not valid */
-	NON_VALID_ICO(2),
+	INVALID_ICO(2),
 	/** empty ico */
 	EMPTY_ICO(3);
 

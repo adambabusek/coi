@@ -18,7 +18,7 @@ public class UserExceptionHandler extends ResponseEntityExceptionHandler {
 	public ResponseEntity<Object> handleUserException(UserException ex, WebRequest request) {
 		String responseBody = DocUtils.getErrorDoc(ex.getType(), ex.getUserMessage()).toJson();
 		HttpHeaders headers = new HttpHeaders();
-		headers.add(HttpHeaders.CONTENT_TYPE, "application/json");
-		return handleExceptionInternal(ex, responseBody, new HttpHeaders(), HttpStatus.OK, request);
+		headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");
+		return handleExceptionInternal(ex, responseBody, headers, HttpStatus.OK, request);
 	}
 }
