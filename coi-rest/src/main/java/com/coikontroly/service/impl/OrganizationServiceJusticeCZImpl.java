@@ -52,7 +52,7 @@ public class OrganizationServiceJusticeCZImpl implements OrganizationService {
 	private String findNameValue(Elements cells) {
 		return cells.get(0)
 					.select("strong")
-					.html();
+					.html().trim();
 	}
 
 }
