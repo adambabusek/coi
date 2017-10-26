@@ -31,7 +31,6 @@ public class OrganizationServiceJusticeCZImpl implements OrganizationService {
 		org.jsoup.nodes.Document doc = Jsoup.connect(msgRes.getSetting("setting.searchOrganizationUrl", ico)).get();
 		Elements table = doc.select(CSS_QUERY_TABLE);
 		if (table == null || !table.hasText()) {
-			// TODO log
 			// organization cannot be found so returned Document is filled only with ICO value
 			return ret;
 		}
