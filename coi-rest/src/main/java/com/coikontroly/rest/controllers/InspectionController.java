@@ -17,6 +17,11 @@ public class InspectionController {
 	@Autowired
 	private InspectionService inspectionSvc;
 
+	@RequestMapping(value="/", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
+	public String findInspection() throws IOException {
+		return findInspections(null);
+	}
+
 	@RequestMapping(value="/{ico}", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
 	public String findInspections(@PathVariable(value="ico") String ico) throws IOException {
 		return inspectionSvc.findInspections(ico).toJson();
